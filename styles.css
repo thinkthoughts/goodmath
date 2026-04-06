@@ -75,7 +75,12 @@ h1 {
   margin: 2rem 0;
   gap: 20px;
 }
-
+.infographic-img {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  display: block;
+}
 .panel {
   flex: 1;
   border: 1px solid #ddd;
