@@ -53,6 +53,44 @@ h1 {
   opacity: 0.8;
   margin-bottom: 2rem;
 }
+.phase-lock {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.phase-lock h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.equation {
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.infographic {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  gap: 20px;
+}
+
+.panel {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.panel h3 {
+  margin-bottom: 0.5rem;
+}
+
+.arrows {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
 
 footer a {
   font-size: 0.85rem;
