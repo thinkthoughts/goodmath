@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>9423 — 2604.01279</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<main class="container">
+
+  <h1>9423 bridge</h1>
+
+  <p class="tagline">
+    arXiv: 2604.01279
+  </p>
+
+  <p>
+    Singular Value Descent reframes optimization as structured updates
+    aligned with dominant directions (singular vectors).
+  </p>
+
+  <!-- infographic -->
+  <img src="/images/2604.01279.png"
+       alt="Singular Value Descent infographic: signal vs noise, constraint, and 45 degree alignment"
+       class="infographic-img">
+
+  <p>
+    updates produce signal only when constrained:
+  </p>
+
+  <p class="equation">
+    constraint → signal &gt; noise
+  </p>
+
+  <p class="equation">
+    f(T(atoms)) ≈ f(atoms)
+  </p>
+
+  <p>
+    otherwise: updates exist, don’t couple across steps.
+  </p>
+
+  <p class="equation">
+    45° 📐 (√(1² + 1²))
+  </p>
+
+  <p>
+    interpretation: optimization succeeds when updates remain within a
+    constrained subspace (signal), rather than drifting (noise).
+  </p>
+
+  <footer>
+    <a href="https://arxiv.org/abs/2604.01279" target="_blank">
+      arXiv:2604.01279
+    </a>
+   <!-- ·
+    <a href="/arxiv/ML/">
+      ML index
+    </a> -->
+    ·
+    <a href="/arxiv/">
+      arXiv index
+    </a>
+    ·
+    <a href="/">
+      home
+    </a>
+  </footer>
+
+</main>
+
+</body>
+</html>
