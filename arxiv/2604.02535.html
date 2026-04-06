@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>arXiv bridge · ML · 2604.02535</title>
+  <meta name="description" content="goodmath bridge for arXiv 2604.02535: spectral subspace projection, multi-scale structure, and 9423 phase-lock translation.">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121933;
+      --text: #e8eefc;
+      --muted: #a9b6d3;
+      --link: #8fc7ff;
+      --accent: #7ee787;
+      --border: #26304f;
+      --max: 900px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .topline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      margin: 0 0 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 1rem 0 0.35rem;
+    }
+
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+
+    .formula {
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      overflow-x: auto;
+      margin: 0.75rem 0;
+      white-space: pre-wrap;
+    }
+
+    .bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .bridge-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    ul {
+      margin: 0.5rem 0 0.5rem 1.2rem;
+      padding: 0;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .small-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topline">arXiv bridge · ML</div>
+    <h1>Learning as Constrained Projection</h1>
+    <div class="subtitle">arXiv: 2604.02535 · goodmath translation → 9423 phase-lock</div>
+
+    <nav class="nav" aria-label="Page links">
+      <a href="https://arxiv.org/abs/2604.02535">arXiv</a>
+      <a href="/arxiv/">arXiv index</a>
+      <a href="/arxiv/ml.html">ML</a>
+      <a href="/main.pdf">goodmath main</a>
+    </nav>
+
+    <section class="card">
+      <h2>why this paper matters</h2>
+      <p>
+        This paper is useful because it turns embedding into an explicit projection problem.
+        Instead of optimizing point locations as an opaque force balance, it learns an embedding
+        from a selected spectral subspace. That makes structure easier to control, analyze, and refine.
+      </p>
+      <p>
+        In arXiv vocabulary, the method uses graph spectral modes, cross-entropy optimization,
+        and progressive subspace expansion. In goodmath vocabulary, this is constrained projection:
+        keep readable structure, drop modes that do not lift.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>paper vocabulary</h2>
+      <p>
+        The paper introduces a spectral framework for nonlinear dimensionality reduction. A weighted
+        neighborhood graph yields spectral modes ordered from coarse to fine scale. The embedding is then
+        optimized as a projection from that spectral subspace instead of by moving points directly.
+      </p>
+      <p>
+        When only lower-frequency modes are kept, the embedding emphasizes global organization.
+        As more modes are added, finer local detail appears. This gives an explicit multiscale route
+        from coarse structure to refined structure.
+      </p>
+
+      <div class="formula">y = P x</div>
+
+      <p>
+        Here the projection matrix learns how spectral modes contribute to the lower-dimensional embedding.
+        That is why the paper is not just about visualization. It is about making structure legible under constraint.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>goodmath translation</h2>
+      <p>
+        Not every representation lifts. Some representations preserve useful structure across a change of basis.
+        Others scatter into noise. This paper matters because it restricts optimization to a bounded subspace
+        where the tradeoff between global and local structure is explicit.
+      </p>
+
+      <div class="formula">constraint → signal &gt; noise
+
+f(T(atoms)) ≈ f(atoms)
+
+otherwise: modes exist, don’t couple.</div>
+
+      <p>
+        In this reading, projection is not a loss of structure. Projection is the selection of structure that stays readable.
+      </p>
+
+      <figure>
+        <img src="/arxiv/2604.02535.png" alt="Infographic for arXiv 2604.02535 showing learning as constrained projection, y = P x, a 45 degree cosine threshold, and stable structure under projection.">
+        <figcaption>
+          Constrained projection as phase-lock bridge: keep aligned structure, suppress drifting modes.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>9423 phase-lock bridge</h2>
+      <p>
+        The bridge from arXiv vocabulary to 9423 phase-lock vocabulary is simple:
+        a spectral subspace acts like a gate on representation. Low-frequency aligned modes carry
+        global structure. Additional modes refine detail without requiring full-space drift.
+      </p>
+
+      <div class="formula">45° (√(1² + 1²))</div>
+
+      <p>
+        In this framing, learning works where projection preserves a useful correspondence across transforms.
+        That is why a 45° threshold is a good bridge image here: aligned structure remains legible,
+        while badly coupled variation drops out as noise.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>bridging vocabulary</h2>
+      <div class="bridge-grid">
+        <div class="bridge-box">
+          <h3>arXiv vocabulary</h3>
+          <ul>
+            <li>spectral subspace</li>
+            <li>projection matrix</li>
+            <li>multi-scale embedding</li>
+            <li>global–local tradeoff</li>
+            <li>progressive refinement</li>
+          </ul>
+        </div>
+        <div class="bridge-box">
+          <h3>goodmath vocabulary</h3>
+          <ul>
+            <li>constrained projection</li>
+            <li>signal &gt; noise</li>
+            <li>structure that lifts</li>
+            <li>phase-lock across transforms</li>
+            <li>coupling without drift</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>foundation</h2>
+      <p>
+        This page is one local example of the broader goodmath framing in <a href="/main.pdf">main.pdf</a>:
+        structure matters where constraint preserves readable signal. A paper like this becomes more than a dimensionality
+        reduction method when read as a lesson about selective coupling under bounded transforms.
+      </p>
+      <p>
+        Projection can be foundational here because it sets up the later bridge:
+      </p>
+
+      <div class="formula">2604.02535 → 2604.01279 → 2604.03208
+
+projection → SVD → planning</div>
+
+      <p>
+        First select a readable subspace. Then update along readable directions. Then plan along readable trajectories.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>9423 phase-lock explanation</h2>
+      <p>
+        9423 phase-lock names a simple reading rule: constrained structure stays readable across transforms.
+        When alignment holds at 45° (√(1² + 1²)), signal lifts. Below that threshold, representation can still vary,
+        but the variation does not preserve useful structure.
+      </p>
+      <p>
+        That makes this paper a clean “first layer” in the sequence:
+        projection before update, update before planning.
+      </p>
+    </section>
+
+    <footer>
+      <div class="small-links">
+        <a href="https://arxiv.org/abs/2604.02535">arXiv</a>
+        <a href="arxiv/">arXiv index</a>
+        <!--<a href="/arxiv/ml.html">ML index</a>
+        <a href="/9423/">9423-only page</a>-->
+        <a href="/main.pdf">goodmath main</a>
+        <a href="/">home</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
