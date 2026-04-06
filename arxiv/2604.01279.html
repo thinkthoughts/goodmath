@@ -2,71 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>9423 — 2604.01279</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>goodmath — arXiv 2604.01279</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 
-<main class="container">
+<main class="container reading-page">
 
-  <h1>9423 bridge</h1>
+  <header class="page-header">
+    <p class="eyebrow">
+      arXiv bridge · ML
+    </p>
+    <h1>
+      SVEN: Singular Value Descent as a Computationally Efficient Natural Gradient Method
+    </h1>
+    <p class="tagline">
+      arXiv: 2604.01279 · goodmath translation → 9423 phase-lock
+    </p>
+    <p class="meta-links">
+      <a href="https://arxiv.org/abs/2604.01279" target="_blank" rel="noopener noreferrer">arXiv</a>
+      ·
+      <a href="/arxiv/">arXiv index</a>
+      ·
+      <a href="/arxiv/ML/">ML</a>
+      ·
+      <a href="/main.pdf">goodmath main</a>
+    </p>
+  </header>
 
-  <p class="tagline">
-    arXiv: 2604.01279
-  </p>
+  <section class="article-section">
+    <h2>why this paper matters</h2>
+    <p>
+      This paper is useful because it asks a practical optimization question:
+      how do we move in directions that matter without spending the full cost
+      of natural gradient methods?
+    </p>
+    <p>
+      In arXiv vocabulary, the answer uses singular value decomposition of the
+      gradient or Jacobian to keep strong directions and suppress weak ones.
+      In goodmath vocabulary, this is a constrained update rule where signal
+      couples and noise does not.
+    </p>
+  </section>
 
-  <p>
-    Singular Value Descent reframes optimization as structured updates
-    aligned with dominant directions (singular vectors).
-  </p>
+  <section class="article-section">
+    <h2>paper vocabulary</h2>
+    <p>
+      Standard gradient descent updates across all available directions, even
+      when some directions are noisy or poorly aligned with the local geometry.
+      Natural gradient methods improve this by respecting geometry, but they can
+      be expensive.
+    </p>
+    <p>
+      Singular Value Descent uses the SVD of a gradient-like object to identify
+      principal directions. Large singular values indicate stronger directions,
+      so the method updates along those and gates weaker modes.
+    </p>
+  </section>
 
-  <!-- infographic -->
-  <img src="images/2604.01279.png"
-       alt="Singular Value Descent infographic: signal vs noise, constraint, and 45 degree alignment"
-       class="infographic-img">
+  <section class="article-section">
+    <h2>goodmath translation</h2>
+    <p>
+      Not every update lifts. Some updates scatter across directions without
+      preserving structure from one step to the next. Those updates exist, but
+      they do not couple to future progress.
+    </p>
+    <p>
+      SVEN adds a learned constraint: keep directions that persist, suppress
+      directions that wash out. That is why this paper fits goodmath so well.
+      It is not merely descent. It is structured descent.
+    </p>
+  </section>
 
-  <p>
-    updates produce signal only when constrained:
-  </p>
+  <figure class="feature-figure">
+    <img
+      src="images/2604.01279.png"
+      alt="Infographic for arXiv 2604.01279 showing Singular Value Descent, gated singular values, signal versus noise, f(atoms), and the 45 degree alignment connection."
+      class="infographic-img"
+    />
+    <figcaption>
+      Singular Value Descent as constraint: keep directions that align, suppress directions that do not couple.
+    </figcaption>
+  </figure>
 
-  <p class="equation">
-    constraint → signal &gt; noise
-  </p>
+  <section class="article-section">
+    <h2>9423 phase-lock bridge</h2>
+    <p>
+      The bridge from arXiv vocabulary to 9423 phase-lock vocabulary is simple:
+      singular values act like a gate on updates. Strong aligned modes carry
+      structured signal. Weak modes behave like noise.
+    </p>
 
-  <p class="equation">
-    f(T(atoms)) ≈ f(atoms)
-  </p>
+    <div class="equation-block">
+      <p class="equation">constraint → signal &gt; noise</p>
+      <p class="equation">f(T(atoms)) ≈ f(atoms)</p>
+      <p class="equation-note">otherwise: updates exist, don’t couple across steps.</p>
+      <p class="equation">45° 📐 (√(1² + 1²))</p>
+    </div>
 
-  <p>
-    otherwise: updates exist, don’t couple across steps.
-  </p>
+    <p>
+      In this framing, learning is not just parameter motion. Learning happens
+      where structure remains legible across transforms. That is the point of
+      the phase-lock: what stays aligned can lift forward.
+    </p>
+  </section>
 
-  <p class="equation">
-    45° 📐 (√(1² + 1²))
-  </p>
+  <section class="article-section">
+    <h2>bridging vocabulary</h2>
 
-  <p>
-    interpretation: optimization succeeds when updates remain within a
-    constrained subspace (signal), rather than drifting (noise).
-  </p>
+    <div class="bridge-grid">
+      <div class="bridge-card">
+        <h3>arXiv vocabulary</h3>
+        <p>principal directions</p>
+        <p>large singular values</p>
+        <p>geometry-aware update</p>
+        <p>computational efficiency</p>
+      </div>
 
-  <footer>
-    <a href="https://arxiv.org/abs/2604.01279" target="_blank">
-      arXiv:2604.01279
-    </a>
-   <!-- ·
-    <a href="/arxiv/ML/">
-      ML index
-    </a> -->
+      <div class="bridge-card">
+        <h3>goodmath vocabulary</h3>
+        <p>aligned directions</p>
+        <p>signal &gt; noise</p>
+        <p>constraint that lifts</p>
+        <p>coupling without drift</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>foundation</h2>
+    <p>
+      This page is one local example of the broader goodmath framing in
+      <a href="/main.pdf">main.pdf</a>: structure matters where constraint
+      preserves readable signal. A paper like this becomes more than an
+      optimization trick when read as a general lesson about selective coupling.
+    </p>
+    <p>
+      Keep what aligns. Drop what does not couple. That is the shared bridge
+      between the paper’s update rule and 9423 phase-lock language.
+    </p>
+  </section>
+
+  <section class="article-section">
+    <h2>9423 phase-lock explanation</h2>
+    <p class="phase-lock-note">
+      9423 phase-lock names a simple reading rule:
+      constrained structure stays readable across transforms.
+      When alignment holds at 45° 📐 (√(1² + 1²)),
+      signal lifts; below that threshold, updates drift as noise.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <a href="https://arxiv.org/abs/2604.01279" target="_blank" rel="noopener noreferrer">arXiv</a>
     ·
-    <a href="/arxiv/">
-      arXiv index
-    </a>
+    <a href="/arxiv/">arXiv index</a>
     ·
-    <a href="/">
-      home
-    </a>
+    <a href="/arxiv/ML/">ML index</a>
+    ·
+    <a href="/9423/2604.01279.html">9423-only page</a>
+    ·
+    <a href="/main.pdf">goodmath main</a>
+    ·
+    <a href="/">home</a>
   </footer>
 
 </main>
