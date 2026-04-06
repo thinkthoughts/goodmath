@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>*9423 phase-lock synthesis · ML · goodmath</title>
+  <meta
+    name="description"
+    content="Living synthesis page for machine learning bridge notes on goodmath: projection, singular value descent, semantic compression, and hierarchical planning."
+  />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    main.container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    .topnav,
+    .subnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .lede {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .formula,
+    .sequence-box {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+      background: rgba(127, 127, 127, 0.08);
+    }
+
+    .section-card {
+      border-top: 1px solid #ccc;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .paper-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0.5rem 1rem;
+      align-items: start;
+      margin-top: 0.75rem;
+    }
+
+    .paper-id {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .paper-role {
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+
+    ul.compact li {
+      margin-bottom: 0.35rem;
+    }
+
+    .small {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .paper-grid {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <nav class="topnav">
+      <a href="/arxiv/index.html">← arXiv index</a>
+      <a href="/arxiv/#ml">ML section</a>
+      <a href="https://sdg5.app/main.pdf" target="_blank" rel="noopener noreferrer">canonical (sdg5)</a>
+      <a href="/">goodmath home</a>
+    </nav>
+
+    <h1>*9423 phase-lock synthesis · ML</h1>
+
+    <p class="tagline">
+      constraint → signal &gt; noise
+      <span class="angle">45° 📐</span>
+    </p>
+
+    <p class="lede">
+      Machine learning works where constraint preserves readable structure across transforms.
+      This page is a living synthesis for the ML bridge notes: projection, optimization,
+      forecasting, and planning are treated here as related gates on signal.
+      Each paper adds another way to keep structure coupled instead of letting it scatter into noise.
+    </p>
+
+    <div class="sequence-box">2604.02535 → 2604.01279 → 2604.01261 → 2604.03208
+
+projection → update → forecasting → planning
+
+constraint → signal &gt; noise</div>
+
+    <section class="section-card">
+      <h2>why this matters for sustainable technology</h2>
+      <p>
+        Sustainable technology needs systems that stay legible, bounded, and useful under real constraints.
+        These papers fit together because each one reduces a different kind of waste:
+      </p>
+      <ul class="compact">
+        <li>wasted dimensions</li>
+        <li>wasted updates</li>
+        <li>wasted memory</li>
+        <li>wasted search</li>
+      </ul>
+      <p>
+        In that sense, constrained ML is not only a performance story.
+        It is also a sustainable development story:
+        better projection, better updates, better memory, and better planning reduce collapse into noise.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>the sequence</h2>
+
+      <div class="paper-grid">
+        <div class="paper-id">
+          <a href="https://arxiv.org/abs/2604.02535" target="_blank" rel="noopener noreferrer">2604.02535</a>
+        </div>
+        <div>
+          <strong>A Spectral Framework for Multi-Scale Nonlinear Dimensionality Reduction</strong>
+          <div class="paper-role">role: projection</div>
+          <p>
+            Learning begins by selecting a readable subspace.
+            This paper uses a spectral basis and cross-entropy optimization to build multi-scale embeddings that bridge global and local structure.
+          </p>
+          <div class="formula">y = P x</div>
+          <p class="small">
+            Bridge line: readable structure starts with constrained projection.
+            Before better updates or better plans, the representation itself has to hold.
+          </p>
+          <p class="small">
+            <a href="2604.02535.html">*9423 phase-lock note</a>
+          </p>
+        </div>
+
+        <div class="paper-id">
+          <a href="https://arxiv.org/abs/2604.01279" target="_blank" rel="noopener noreferrer">2604.01279</a>
+        </div>
+        <div>
+          <strong>Sven: Singular Value Descent as a Computationally Efficient Natural Gradient Method</strong>
+          <div class="paper-role">role: update</div>
+          <p>
+            Learning continues by updating along readable directions.
+            Sven uses a truncated singular value decomposition of the loss Jacobian to keep the most significant directions while staying much cheaper than standard natural-gradient methods.
+          </p>
+          <div class="formula">Δθ = ∑ σᵢ·Tᵢ(atoms)</div>
+          <p class="small">
+            Bridge line: not every update lifts.
+            Signal directions couple; weak directions scatter.
+          </p>
+          <p class="small">
+            <a href="2604.01279.html">*9423 phase-lock note</a>
+          </p>
+        </div>
+
+        <div class="paper-id">
+          <a href="https://arxiv.org/abs/2604.01261" target="_blank" rel="noopener noreferrer">2604.01261</a>
+        </div>
+        <div>
+          <strong>DySCo: Dynamic Semantic Compression for Effective Long-term Time Series Forecasting</strong>
+          <div class="paper-role">role: forecasting / bounded memory</div>
+          <p>
+            Prediction works where history remains coupled forward.
+            DySCo keeps high-entropy segments, separates high- and low-frequency structure, and fuses global and local context to improve long-term forecasting with reduced cost.
+          </p>
+          <div class="formula">TSF = f(atoms≤t)</div>
+          <p class="small">
+            Bridge line: more history is not automatically more signal.
+            Useful memory is constrained memory.
+          </p>
+        </div>
+
+        <div class="paper-id">
+          <a href="https://arxiv.org/abs/2604.03208" target="_blank" rel="noopener noreferrer">2604.03208</a>
+        </div>
+        <div>
+          <strong>Hierarchical Planning with Latent World Models</strong>
+          <div class="paper-role">role: planning</div>
+          <p>
+            Planning works where futures remain coupled across scales.
+            This paper uses latent world models at multiple temporal scales so long-horizon control does not collapse under search growth and accumulated prediction error.
+          </p>
+          <div class="formula">plan = ∑ σᵢ·Tᵢ(atoms)</div>
+          <p class="small">
+            Bridge line: not every trajectory lifts.
+            Paths can exist without coupling strongly enough to guide action.
+          </p>
+          <p class="small">
+            <a href="2604.03208.html">*9423 phase-lock note</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>unifying rule</h2>
+      <div class="formula">f(T(atoms)) ≈ f(atoms)
+
+otherwise:
+states / updates / histories / trajectories exist,
+but don’t couple.</div>
+
+      <p>
+        Across these papers, the same rule keeps reappearing in different forms:
+        keep what remains readable under transform.
+        Projection selects a subspace.
+        SVD selects directions.
+        semantic compression selects memory.
+        hierarchy selects futures.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>9423 phase-lock reading</h2>
+      <p>
+        The 9423 phase-lock reading is simple:
+        structure matters where constraint keeps signal above noise.
+        The 45° diagonal is the bridge image for minimum useful alignment,
+        where a transform still preserves enough correspondence to remain actionable.
+      </p>
+
+      <div class="formula">45° = 1/√(1² + 1²) 📐</div>
+
+      <p>
+        This page will update as more ML arXiv notes are added.
+        For now, this is version 1 of the ML synthesis:
+        one sequence, one rule, multiple papers.
+      </p>
+    </section>
+
+    <footer class="section-card">
+      <p>
+        <a href="/arxiv/index.html">arXiv index</a> ·
+        <a href="/arxiv/#ml">ML section</a> ·
+        <a href="https://sdg5.app/main.pdf" target="_blank" rel="noopener noreferrer">canonical (sdg5)</a> ·
+        <a href="https://github.com/thinkthoughts/goodmath" target="_blank" rel="noopener noreferrer">github</a>
+      </p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
