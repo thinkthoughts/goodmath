@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>arXiv bridge · ML · 2604.03208</title>
+  <meta name="description" content="goodmath bridge for arXiv 2604.03208: hierarchical planning with latent world models, temporal constraint, and 9423 phase-lock translation.">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121933;
+      --text: #e8eefc;
+      --muted: #a9b6d3;
+      --link: #8fc7ff;
+      --accent: #7ee787;
+      --border: #26304f;
+      --max: 900px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .topline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      margin: 0 0 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 1rem 0 0.35rem;
+    }
+
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+
+    .formula {
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      overflow-x: auto;
+      margin: 0.75rem 0;
+      white-space: pre-wrap;
+    }
+
+    .bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .bridge-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    ul {
+      margin: 0.5rem 0 0.5rem 1.2rem;
+      padding: 0;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .small-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topline">arXiv bridge · ML</div>
+    <h1>Hierarchical Planning with Latent World Models</h1>
+    <div class="subtitle">arXiv: 2604.03208 · goodmath translation → 9423 phase-lock</div>
+
+    <nav class="nav" aria-label="Page links">
+      <a href="https://arxiv.org/abs/2604.03208">arXiv</a>
+      <a href="/arxiv/">arXiv index</a>
+      <a href="/arxiv/ml.html">ML</a>
+      <a href="/main.pdf">goodmath main</a>
+    </nav>
+
+    <section class="card">
+      <h2>why this paper matters</h2>
+      <p>
+        This paper is useful because it asks a practical planning question:
+        how do we keep long-horizon control from collapsing under search complexity
+        and accumulated prediction error?
+      </p>
+      <p>
+        In arXiv vocabulary, the answer is to learn latent world models at multiple
+        temporal scales and perform hierarchical planning across those scales.
+        In goodmath vocabulary, this is temporal constraint:
+        keep futures that couple, drop futures that do not lift.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>paper vocabulary</h2>
+      <p>
+        Learned world models can support model predictive control, but long-horizon
+        planning becomes difficult because the search space grows too quickly and
+        prediction errors accumulate over time.
+      </p>
+      <p>
+        This paper addresses that by planning hierarchically in latent space:
+        a higher level handles slower, longer-horizon decisions,
+        while lower levels handle shorter-horizon action detail.
+        The result is a modular planning abstraction that works across multiple
+        latent world-model architectures and domains.
+      </p>
+
+      <div class="formula">observe → latent predict → hierarchical plan → act → repeat</div>
+
+      <p>
+        The paper reports strong gains from this structure:
+        70% success on real-world non-greedy pick-and-place from final-goal specification,
+        compared with 0% for a single-level world model,
+        and up to 4× less planning-time compute in simulation.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>goodmath translation</h2>
+      <p>
+        Not every future lifts. Some futures can be simulated, but they do not remain
+        coupled across scales. Those paths exist, but they do not preserve usable structure.
+      </p>
+
+      <div class="formula">constraint → signal &gt; noise
+
+plan = ∑ σᵢ · Tᵢ(atoms)
+
+otherwise: trajectories exist, don’t couple.</div>
+
+      <p>
+        In this reading, hierarchy is not extra complexity. Hierarchy is what keeps planning
+        bounded enough to stay legible over time.
+      </p>
+
+      <figure>
+        <img src="/arxiv/images/2604.03208.png" alt="Infographic for arXiv 2604.03208 showing hierarchical planning with latent world models, constrained trajectory selection, a 45 degree cosine threshold, and structure preserved across planning scales.">
+        <figcaption>
+          Hierarchical planning as temporal constraint: keep trajectories that couple, suppress paths that drift.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>9423 phase-lock bridge</h2>
+      <p>
+        The bridge from arXiv vocabulary to 9423 phase-lock vocabulary is simple:
+        latent hierarchy acts like a gate on futures. Coarse scales hold global direction.
+        Finer scales refine action detail. Constraint decides what remains coupled across them.
+      </p>
+
+      <div class="formula">45° (√(1² + 1²))</div>
+
+      <p>
+        In this framing, planning works where structure remains readable across time scales.
+        That is why a 45° threshold is a useful bridge image here:
+        aligned trajectories lift forward; weakly coupled paths drop into noise.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>bridging vocabulary</h2>
+      <div class="bridge-grid">
+        <div class="bridge-box">
+          <h3>arXiv vocabulary</h3>
+          <ul>
+            <li>latent world model</li>
+            <li>hierarchical planning</li>
+            <li>multiple temporal scales</li>
+            <li>long-horizon control</li>
+            <li>reduced planning complexity</li>
+          </ul>
+        </div>
+        <div class="bridge-box">
+          <h3>goodmath vocabulary</h3>
+          <ul>
+            <li>temporal constraint</li>
+            <li>signal &gt; noise</li>
+            <li>coupled trajectories</li>
+            <li>futures that lift</li>
+            <li>planning without drift</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>foundation</h2>
+      <p>
+        This page is one local example of the broader goodmath framing in <a href="/main.pdf">main.pdf</a>:
+        structure matters where constraint preserves readable signal.
+        A paper like this becomes more than a planning trick when read as a lesson
+        about selective coupling across time.
+      </p>
+      <p>
+        This paper also completes a clean three-step bridge:
+      </p>
+
+      <div class="formula">2604.02535 → 2604.01279 → 2604.03208
+
+projection → SVD → planning</div>
+
+      <p>
+        First select a readable subspace.
+        Then update along readable directions.
+        Then plan along readable trajectories.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>9423 phase-lock explanation</h2>
+      <p>
+        9423 phase-lock names a simple reading rule:
+        constrained structure stays readable across transforms.
+        When alignment holds at 45° (√(1² + 1²)), signal lifts.
+        Below that threshold, trajectories may still exist,
+        but they do not remain coupled strongly enough to guide action.
+      </p>
+      <p>
+        That makes this paper a clean “third layer” in the sequence:
+        projection before update, update before planning.
+      </p>
+    </section>
+
+    <footer>
+      <div class="small-links">
+        <a href="https://arxiv.org/abs/2604.03208">arXiv</a>
+        <a href="arxiv/">arXiv index</a>
+        <!--<a href="/arxiv/ml.html">ML index</a>
+        <a href="/9423/">9423-only page</a>
+        -->
+        <a href="/main.pdf">goodmath main</a>
+        <a href="/">home</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
