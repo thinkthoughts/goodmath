@@ -3,10 +3,14 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: #ffffff;
   color: #111;
+}
+
+/* homepage-only centering */
+body.homepage {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -53,6 +57,7 @@ h1 {
   opacity: 0.8;
   margin-bottom: 2rem;
 }
+
 .phase-lock {
   margin-top: 3rem;
   font-size: 0.9rem;
@@ -64,23 +69,20 @@ h1 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+
 .equation {
   margin: 1rem 0;
   font-family: monospace;
   font-size: 1rem;
 }
+
 .infographic {
   display: flex;
   justify-content: space-between;
   margin: 2rem 0;
   gap: 20px;
 }
-.infographic-img {
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
-  display: block;
-}
+
 .panel {
   flex: 1;
   border: 1px solid #ddd;
@@ -96,6 +98,15 @@ h1 {
   font-size: 1.2rem;
   margin-top: 0.5rem;
 }
+
+.infographic-img {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  display: block;
+}
+
+/* arXiv tables */
 .arxiv-table {
   width: 100%;
   border-collapse: collapse;
@@ -103,7 +114,6 @@ h1 {
   margin: 2rem 0;
 }
 
-/* header */
 .arxiv-table thead {
   border-bottom: 2px solid #111;
 }
@@ -116,19 +126,16 @@ h1 {
   text-transform: lowercase;
 }
 
-/* rows */
 .arxiv-table td {
   padding: 10px 8px;
   vertical-align: top;
   border-bottom: 1px solid #eee;
 }
 
-/* hover (subtle) */
 .arxiv-table tbody tr:hover {
   background: #fafafa;
 }
 
-/* links */
 .arxiv-table a {
   text-decoration: none;
   border-bottom: 1px solid #111;
@@ -139,19 +146,19 @@ h1 {
   opacity: 0.6;
 }
 
-/* description column */
 .arxiv-table td:nth-child(3) {
   max-width: 400px;
   line-height: 1.4;
 }
 
-/* small columns tighter */
 .arxiv-table td:nth-child(1),
 .arxiv-table td:nth-child(2),
 .arxiv-table td:nth-child(4),
 .arxiv-table td:nth-child(5) {
   white-space: nowrap;
 }
+
+/* reading/article pages */
 .reading-page {
   max-width: 860px;
   margin: 0 auto;
@@ -173,7 +180,7 @@ h1 {
 .page-header h1 {
   font-size: 2.2rem;
   line-height: 1.15;
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem 0;
 }
 
 .meta-links {
@@ -206,7 +213,7 @@ h1 {
   margin-top: 0.75rem;
 }
 
-.infographic-img {
+.reading-page .infographic-img {
   width: 100%;
   max-width: 860px;
   display: block;
@@ -219,12 +226,6 @@ h1 {
   padding: 1rem 1.1rem;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-}
-
-.equation {
-  font-family: monospace;
-  font-size: 1rem;
-  margin: 0.5rem 0;
 }
 
 .equation-note {
@@ -267,6 +268,12 @@ h1 {
   font-size: 0.95rem;
 }
 
+footer a {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
 @media (max-width: 700px) {
   .page-header h1 {
     font-size: 1.7rem;
@@ -275,9 +282,21 @@ h1 {
   .bridge-grid {
     grid-template-columns: 1fr;
   }
-}
-footer a {
-  font-size: 0.85rem;
-  opacity: 0.6;
-  text-decoration: none;
+
+  .arxiv-table {
+    font-size: 0.8rem;
+  }
+
+  .arxiv-table td:nth-child(3) {
+    max-width: none;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .infographic {
+    flex-direction: column;
+  }
 }
