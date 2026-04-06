@@ -96,7 +96,62 @@ h1 {
   font-size: 1.2rem;
   margin-top: 0.5rem;
 }
+.arxiv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 2rem 0;
+}
 
+/* header */
+.arxiv-table thead {
+  border-bottom: 2px solid #111;
+}
+
+.arxiv-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 8px;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+}
+
+/* rows */
+.arxiv-table td {
+  padding: 10px 8px;
+  vertical-align: top;
+  border-bottom: 1px solid #eee;
+}
+
+/* hover (subtle) */
+.arxiv-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* links */
+.arxiv-table a {
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 1px;
+}
+
+.arxiv-table a:hover {
+  opacity: 0.6;
+}
+
+/* description column */
+.arxiv-table td:nth-child(3) {
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+/* small columns tighter */
+.arxiv-table td:nth-child(1),
+.arxiv-table td:nth-child(2),
+.arxiv-table td:nth-child(4),
+.arxiv-table td:nth-child(5) {
+  white-space: nowrap;
+}
 footer a {
   font-size: 0.85rem;
   opacity: 0.6;
