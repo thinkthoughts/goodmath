@@ -152,6 +152,130 @@ h1 {
 .arxiv-table td:nth-child(5) {
   white-space: nowrap;
 }
+.reading-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  text-align: left;
+}
+
+.page-header {
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.page-header h1 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.meta-links {
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+}
+
+.article-section {
+  margin: 2.5rem 0;
+}
+
+.article-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.9rem;
+  text-transform: lowercase;
+}
+
+.article-section p {
+  line-height: 1.65;
+  margin: 0.85rem 0;
+}
+
+.feature-figure {
+  margin: 2.5rem 0;
+}
+
+.feature-figure figcaption {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.75rem;
+}
+
+.infographic-img {
+  width: 100%;
+  max-width: 860px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.equation-block {
+  margin: 1.25rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+.equation {
+  font-family: monospace;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.equation-note {
+  margin: 0.6rem 0;
+  opacity: 0.85;
+}
+
+.bridge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+.bridge-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.bridge-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.bridge-card p {
+  margin: 0.45rem 0;
+}
+
+.phase-lock-note {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.page-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+  .page-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .bridge-grid {
+    grid-template-columns: 1fr;
+  }
+}
 footer a {
   font-size: 0.85rem;
   opacity: 0.6;
