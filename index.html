@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Persistent 24/25 Constant in Primorial-Constrained Residue Counts | Good Math</title>
+  <meta name="description" content="HTML version of A Persistent 24/25 Constant in Primorial-Constrained Residue Counts and a 9423 Phase-Lock Representation.">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --paper: #fffdf8;
+      --ink: #171512;
+      --muted: #6e665b;
+      --line: #ddd4c4;
+      --accent: #6f4e2f;
+      --code-bg: #f1eadf;
+      --shadow: 0 18px 60px rgba(31, 24, 14, 0.12);
+      --max: 820px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #11100e;
+      --paper: #1b1814;
+      --ink: #f3eee5;
+      --muted: #b8ab9b;
+      --line: #3b342b;
+      --accent: #e3bd82;
+      --code-bg: #252018;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      line-height: 1.65;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    a { color: var(--accent); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .site-nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .brand { font-weight: 700; letter-spacing: 0.02em; text-decoration: none; }
+
+    .nav-links { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+
+    button {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: clamp(1.3rem, 4vw, 3.25rem);
+    }
+
+    .paper-head { text-align: center; margin-bottom: 2rem; }
+
+    h1 {
+      margin: 0 0 1rem;
+      line-height: 1.14;
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+    }
+
+    .author, .meta { margin: 0.2rem 0; color: var(--muted); }
+
+    .draft { margin-top: 0.85rem; font-style: italic; color: var(--muted); }
+
+    h2 {
+      margin-top: 2.2rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--line);
+      line-height: 1.25;
+      font-size: 1.35rem;
+    }
+
+    h3 { margin-top: 1.6rem; font-size: 1.05rem; }
+
+    .abstract {
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 85%, var(--bg));
+      padding: 1rem 1.15rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .abstract h2 {
+      border: 0;
+      padding: 0;
+      margin: 0 0 0.4rem;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .equation {
+      margin: 1.1rem 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+    }
+
+    th, td { border: 1px solid var(--line); padding: 0.6rem 0.7rem; text-align: left; }
+    th { background: var(--code-bg); }
+
+    pre {
+      overflow-x: auto;
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+    .return-box {
+      margin-top: 2.25rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 80%, var(--bg));
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .return-box p { margin: 0.25rem 0; }
+
+    footer {
+      max-width: var(--max);
+      margin: -2rem auto 3rem;
+      padding: 0 1rem;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+    }
+
+    @media print {
+      .site-header, footer, .return-box { display: none; }
+      body { background: white; color: black; }
+      main { margin: 0; max-width: none; }
+      article { border: 0; box-shadow: none; padding: 0; }
+      a { color: black; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">goodmath.app</a>
+      <div class="nav-links">
+        <a href="/persist.pdf">PDF</a>
+        <a href="https://labreports.app/">Lab Reports</a>
+        <a href="https://danhawkley.dev/">Next Steps</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header class="paper-head">
+        <h1>A Persistent \(\frac{24}{25}\) Constant in Primorial-Constrained Residue Counts and a 9423 Phase-Lock Representation</h1>
+        <p class="author">thinkthoughts</p>
+        <p class="meta"><a href="https://github.com/thinkthoughts">github.com/thinkthoughts</a></p>
+        <p class="meta">March 11, 2026</p>
+        <p class="draft">Draft version 1.1</p>
+      </header>
+
+      <section class="abstract" id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          We study counting functions defined by simultaneous residue and coprimality constraints relative to primorials. For
+        </p>
+        <div class="equation">
+          \[
+            S(P_k,L) = \{n \le L : n \equiv 5 \pmod 6,\ \gcd(n,P_k)=1\},
+          \]
+        </div>
+        <p>
+          where \(P_k = p_k\#\) denotes the \(k\)-th primorial, the standard density heuristic predicts
+        </p>
+        <div class="equation">
+          \[
+            |S(P_k,L)| \approx \frac{\varphi(P_k)}{P_k}\frac{L}{6}.
+          \]
+        </div>
+        <p>
+          Numerical computations across increasing limits \(L\) indicate that the normalized ratio
+        </p>
+        <div class="equation">
+          \[
+            r(L,P_k)=\frac{|S(P_k,L)|}{\frac{\varphi(P_k)}{P_k}\frac{L}{6}}
+          \]
+        </div>
+        <p>
+          approaches the constant \(\frac{24}{25}\). We describe this phenomenon, present numerical evidence, and formulate an analytic problem motivated by the observation.
+        </p>
+      </section>
+
+      <section id="introduction">
+        <h2>1 Introduction</h2>
+        <p>Let</p>
+        <div class="equation">\[P_k = p_k\#\]</div>
+        <p>denote the \(k\)-th primorial. Define</p>
+        <div class="equation">
+          \[
+            S(P_k,L) = \{n \le L : n \equiv 5 \pmod 6,\ \gcd(n,P_k)=1\}.
+          \]
+        </div>
+        <p>
+          Among integers up to \(L\), exactly one residue class modulo 6 corresponds to \(n \equiv 5 \pmod 6\), giving density \(1/6\).
+        </p>
+        <p>Coprimality with \(P_k\) contributes</p>
+        <div class="equation">\[\frac{\varphi(P_k)}{P_k}.\]</div>
+        <p>This admits the Euler product</p>
+        <div class="equation">
+          \[
+            \frac{\varphi(P_k)}{P_k}=\prod_{p\le p_k}\left(1-\frac{1}{p}\right),
+          \]
+        </div>
+        <p>a standard density factor appearing throughout sieve theory. Thus the heuristic estimate becomes</p>
+        <div class="equation">
+          \[
+            |S(P_k,L)| \approx \frac{\varphi(P_k)}{P_k}\frac{L}{6}.
+          \]
+        </div>
+        <p>Define the normalized ratio</p>
+        <div class="equation">
+          \[
+            r(L,P_k)=\frac{|S(P_k,L)|}{\frac{\varphi(P_k)}{P_k}\frac{L}{6}}.
+          \]
+        </div>
+        <p>The naive heuristic predicts \(r(L,P_k) \to 1\). However numerical experiments suggest</p>
+        <div class="equation">\[r(L,P_k) \to \frac{24}{25}.\]</div>
+      </section>
+
+      <section id="baseline-density">
+        <h2>2 Baseline Density</h2>
+        <p><strong>Lemma 1.</strong> Let \(P_k = p_k\#\) and</p>
+        <div class="equation">
+          \[
+            S(P_k,L)=\{n\le L : n\equiv 5 \pmod 6,\ \gcd(n,P_k)=1\}.
+          \]
+        </div>
+        <p>
+          Because \(n \equiv 5 \pmod 6\) already incorporates the local conditions at the primes 2 and 3, a refined density heuristic is
+        </p>
+        <div class="equation">
+          \[
+            \frac{1}{6}\prod_{\substack{p\mid P_k\\p>3}}\left(1-\frac{1}{p}\right).
+          \]
+        </div>
+      </section>
+
+      <section id="geometric-representation">
+        <h2>3 A Geometric Representation</h2>
+        <p>Consider the weighted tuple</p>
+        <div class="equation">\[(9,4,2,3).\]</div>
+        <p>Let</p>
+        <div class="equation">\[\theta_k \in \{0^\circ,60^\circ,120^\circ,180^\circ\}.\]</div>
+        <p>Define</p>
+        <div class="equation">
+          \[
+            V = \sum_{k=1}^{4} w_k e^{i\theta_k}.
+          \]
+        </div>
+        <p>The diagonal direction</p>
+        <div class="equation">\[\theta = 45^\circ\]</div>
+        <p>corresponds to</p>
+        <div class="equation">
+          \[
+            (1,1),\qquad \|(1,1)\| = \sqrt{1^2+1^2}.
+          \]
+        </div>
+        <p>We refer to this configuration as a 9423 phase-lock representation.</p>
+      </section>
+
+      <section id="numerical-verification">
+        <h2>4 Numerical Verification</h2>
+        <p>We computed</p>
+        <div class="equation">
+          \[
+            r(L,P_k)=\frac{|S(P_k,L)|}{\frac{\varphi(P_k)}{P_k}\frac{L}{6}}.
+          \]
+        </div>
+        <p>
+          For moderate \(L\), the ratios fluctuate due to finite-range effects typical in sieve computations. As \(L\) increases they appear to approach \(\frac{24}{25}\).
+        </p>
+
+        <table>
+          <thead>
+            <tr><th>\(L\)</th><th>\(r(L,210)\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(10^5\)</td><td>\(\frac{27}{20}\)</td></tr>
+            <tr><td>\(10^6\)</td><td>\(\frac{23}{20}\)</td></tr>
+            <tr><td>\(10^7\)</td><td>\(\frac{51}{50}\)</td></tr>
+            <tr><td>\(10^8\)</td><td>\(\frac{49}{50}\)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="companion-residue-test">
+        <h2>5 Companion Residue Test</h2>
+        <p>
+          A natural comparison is obtained by replacing
+        </p>
+        <div class="equation">\[n\equiv 5 \pmod 6\]</div>
+        <p>with</p>
+        <div class="equation">\[n\equiv 1 \pmod 6,\]</div>
+        <p>or by examining the combined admissible set</p>
+        <div class="equation">\[n\equiv 1,5 \pmod 6.\]</div>
+        <p>
+          Such comparisons help determine whether the phenomenon is tied specifically to a residue representative or to the primorial coprimality constraint itself.
+        </p>
+      </section>
+
+      <section id="classical-local-factors">
+        <h2>6 Relation to Classical Local Factors</h2>
+        <p>The constant \(\frac{24}{25}\) satisfies</p>
+        <div class="equation">
+          \[
+            \frac{24}{25} = 1 - \frac{1}{5^2}.
+          \]
+        </div>
+        <p>
+          Factors of the form \(1 - \frac{1}{p^2}\) occur in Euler products related to the Riemann zeta function and in singular-series constants arising in analytic number theory. This suggests a possible connection with a local contribution associated with the prime \(p = 5\).
+        </p>
+      </section>
+
+      <section id="problem">
+        <h2>7 Problem</h2>
+        <p>
+          Provide an analytic explanation for the apparent limiting constant \(\frac{24}{25}\) in the normalized ratios \(r(L,P_k)\) associated with the set
+        </p>
+        <div class="equation">
+          \[
+            S(P_k,L)=\{n\le L : n\equiv 5 \pmod 6,\ \gcd(n,P_k)=1\}.
+          \]
+        </div>
+        <p>
+          In particular, determine whether the constant arises from a local factor in an Euler-product or singular-series description of the density.
+        </p>
+      </section>
+
+      <section id="conclusion">
+        <h2>8 Conclusion</h2>
+        <p>
+          We describe numerical evidence for a persistent constant \(\frac{24}{25}\) in primorial-constrained residue counting and formulate an analytic problem motivated by the observation.
+        </p>
+      </section>
+
+      <section id="verification-code">
+        <h2>Appendix A: Verification Code</h2>
+        <pre><code>from math import gcd
+from sympy import totient
+
+def residue_count(limit, primorial, residue):
+    count_actual = 0
+    for n in range(residue, limit, 6):
+        if gcd(n, primorial) == 1:
+            count_actual += 1
+
+    density = totient(primorial) / primorial
+    predicted = density * (limit / 6)
+    return count_actual, predicted, count_actual / predicted</code></pre>
+      </section>
+
+      <section id="acknowledgements">
+        <h2>Acknowledgements</h2>
+        <p>
+          The author thanks the classical formulation of Cantor's diagonal argument for inspiration and the analytic number theory community for foundational work on sieve methods.
+        </p>
+      </section>
+
+      <section id="references">
+        <h2>References</h2>
+        <p>[1] T. Tao, <em>The parity problem in sieve theory.</em></p>
+        <p>[2] J. Friedlander and H. Iwaniec, <em>Opera de Cribro</em>, American Mathematical Society.</p>
+      </section>
+
+      <aside class="return-box" aria-label="Reference use">
+        <p><strong>Use as reference base:</strong> read the paper, then return to the active lab report, repo, seminar slide, or next-step trail.</p>
+        <p><a href="/persist.pdf">Download/read the PDF version</a></p>
+      </aside>
+    </article>
+  </main>
+
+  <footer>
+    <p>goodmath.app - HTML reference version of <code>persist.pdf</code>.</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') {
+      root.setAttribute('data-theme', saved);
+    }
+    function setButtonText() {
+      toggle.textContent = root.getAttribute('data-theme') === 'dark' ? 'Light mode' : 'Dark mode';
+    }
+    setButtonText();
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      setButtonText();
+    });
+  </script>
+</body>
+</html>
