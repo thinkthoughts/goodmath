@@ -399,7 +399,226 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+  
+    /* Reading Point application sections */
+    .reading-section {
+      margin-top: 72px;
+      padding-top: 56px;
+      border-top: 1px solid #252a31;
+    }
+
+    .reading-section .section-header {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .reading-section .section-kicker {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .reading-section h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .section-intro,
+    .reading-copy,
+    .constraint-summary,
+    .reading-note {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-intro {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    .reading-copy {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .reading-copy p,
+    .constraint-summary p,
+    .reading-note p {
+      margin-top: 0;
+    }
+
+    .reading-copy strong,
+    .constraint-summary strong,
+    .reading-note strong {
+      color: var(--foreground);
+    }
+
+    .reading-figure {
+      width: 100%;
+      margin: 30px auto 0;
+    }
+
+    .reading-figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border: 1px solid #252a31;
+      border-radius: 18px;
+      background: #ffffff;
+    }
+
+    /* The SO(10) graphic is portrait; keep it readable without making it enormous. */
+    .so10-application .reading-figure {
+      max-width: 680px;
+    }
+
+    /* The Reading Point 5 graphic is landscape and can use the full content width. */
+    .reading-point-five .reading-figure {
+      max-width: 900px;
+    }
+
+    .reading-figure figcaption {
+      max-width: 720px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .equation-block {
+      max-width: 720px;
+      margin: 28px auto;
+      padding: 20px 22px;
+      overflow-x: auto;
+
+      border: 1px solid #252a31;
+      border-radius: 18px;
+
+      background: #0b0d10;
+      color: var(--foreground);
+
+      text-align: center;
+      font-size: clamp(1.25rem, 4vw, 1.8rem);
+    }
+
+    .residue-equation {
+      color: var(--accent);
+    }
+
+    /* Prevent MathJax display equations from overflowing narrow screens. */
+    .equation-block mjx-container[display="true"] {
+      margin: 0 !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .equation-block svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .constraint-summary {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .reading-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+
+      border-left: 3px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+
+      background: #0b0d10;
+      color: var(--muted);
+
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .section-cta {
+      margin: 30px 0 0;
+      text-align: center;
+    }
+
+    .section-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 44px;
+      padding: 0 18px;
+
+      border: 1px solid #343a44;
+      border-radius: 12px;
+
+      background: #111419;
+      color: var(--foreground);
+
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .section-cta a:hover,
+    .section-cta a:focus-visible {
+      border-color: var(--accent);
+      background: #171a20;
+    }
+
+    @media (max-width: 760px) {
+      .reading-section {
+        margin-top: 56px;
+        padding-top: 42px;
+      }
+
+      .reading-figure {
+        margin-top: 24px;
+      }
+
+      .so10-application .reading-figure {
+        max-width: 100%;
+      }
+
+      .equation-block {
+        padding: 17px 12px;
+        font-size: 1.08rem;
+      }
+    }
+
   </style>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      },
+      svg: {
+        fontCache: "global"
+      }
+    };
+  </script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+  ></script>
+
 </head>
 
 <body>
@@ -610,12 +829,156 @@
       </div>
 
     </section>
+    <section class="reading-section reading-point-five" id="reading-point-five">
+  <header class="section-header">
+    <p class="section-kicker">Application</p>
+    <h2>Reading Point: +5</h2>
+
+    <p class="section-intro">
+      The same integer can be read from different specified objects.
+      Each object supplies its own specification of 5.
+    </p>
+  </header>
+
+  <figure class="reading-figure">
+    <img
+      src="images/RP_5_Handedness.png"
+      alt="Reading Point 5 infographic comparing five different specified objects. A hand has five digits, SO(10) has rank five, five-dimensional space has dimension five, a pentagon has five sides, and a music staff has five lines. The figure emphasizes: different objects, same reading point; each object supplies its own specification of 5."
+      loading="lazy"
+    >
+
+    <figcaption>
+      Different objects can produce the same numerical reading point
+      without being identified with one another.
+    </figcaption>
+  </figure>
+
+  <div class="reading-copy">
+    <p>
+      A reading point does not claim that a hand, a Lie algebra,
+      a geometric space, a polygon, and a music staff are the same
+      object. Their specifications remain distinct.
+    </p>
+
+    <p>
+      What they share here is a readable value:
+      <strong>5</strong>.
+    </p>
+  </div>
+</section>
+
+
+<section class="reading-section plus-five-constraint" id="plus-five-constraint">
+  <header class="section-header">
+    <p class="section-kicker">Arithmetic reading</p>
+    <h2>+5 constraint</h2>
+  </header>
+
+  <div
+    class="equation-block"
+    aria-label="One plus one, multiplied by three, multiplied by five, equals thirty"
+  >
+    \[
+      (1+1)\times3\times5=30
+    \]
+  </div>
+
+  <div class="reading-copy">
+    <p>
+      Every prime \(p>5\) resists division by
+      \(2\), \(3\), and \(5\). Therefore its residue modulo 30
+      must occupy one of eight classes:
+    </p>
+  </div>
+
+  <div
+    class="equation-block residue-equation"
+    aria-label="The modulo 30 residue classes 1, 7, 11, 13, 17, 19, 23, and 29"
+  >
+    \[
+      p\bmod30
+      \in
+      \{1,7,11,13,17,19,23,29\}.
+    \]
+  </div>
+
+  <div class="constraint-summary">
+    <p>
+      <strong>30 positions → 8 candidate reading points.</strong>
+    </p>
+
+    <p>
+      Divisibility by \(2\), \(3\), and \(5\) removes the other
+      22 residue positions. Occupying one of the eight remaining
+      classes is necessary for a prime greater than 5, but it does
+      not by itself establish primality.
+    </p>
+  </div>
+
+  <aside class="reading-note">
+    <p>
+      <strong>Specified readings remain distinct.</strong>
+      Divisibility is the arithmetic reading. Physical quantities,
+      including gravity, require their own physical specification.
+      A shared reading point does not turn one specification into
+      another.
+    </p>
+  </aside>
+</section>
+
+
+<section class="reading-section so10-application" id="so10-reading-point">
+  <header class="section-header">
+    <p class="section-kicker">One specification of 5</p>
+    <h2>SO(10): rank 5</h2>
+
+    <p class="section-intro">
+      In \(\mathfrak{so}(10)\), the reading point 5 has a precise
+      algebraic specification: rank.
+    </p>
+  </header>
+
+  <figure class="reading-figure">
+    <img
+      src="images/RP_SO-10.png"
+      alt="Lie Algebras for SO(10) infographic. The Lie algebra so(10) has dimension 45 and rank 5. Five mutually commuting Cartan generators H1 through H5 organize the weights of a 16-dimensional chiral spinor representation. The 16 branches under SU(5) times U(1) and contains one matter generation, including a right-handed neutrino."
+      loading="lazy"
+    >
+
+    <figcaption>
+      Lie-algebra structure supplies its own specification of the
+      reading point 5.
+    </figcaption>
+  </figure>
+
+  <div class="reading-copy">
+    <p>
+      The rank of \(\mathfrak{so}(10)\) is 5, corresponding to a
+      maximal set of five mutually commuting Cartan generators.
+      Those five commuting directions label the weights of the
+      16-dimensional chiral spinor representation.
+    </p>
+
+    <p>
+      The example deepens the reading without changing the rule:
+      <strong>5 is specified by the object being read.</strong>
+      Here the specification is Lie-algebra rank, rather than digits,
+      geometric dimension, polygon sides, or staff lines.
+    </p>
+  </div>
+
+  <p class="section-cta">
+    <a href="https://readingpoint.app/">
+      Read another point
+    </a>
+  </p>
+</section>
 
     <footer>
       <strong>Reading Point</strong>
 
       <span>
-        The modular reading space stays 30 states.
+        The modular reading space consists of 30 states.
       </span>
     </footer>
 
