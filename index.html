@@ -140,7 +140,7 @@
     }
 
     .hero {
-      padding: clamp(4.5rem, 10vw, 8rem) 0 4rem;
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0 4rem;
       text-align: center;
     }
 
@@ -176,13 +176,14 @@
 
     .flow {
       margin: 3rem auto 0;
-      padding: 1.3rem;
-      max-width: 720px;
+      padding: 1.3rem 1rem;
+      width: 100%;
+      max-width: 860px;
       border: 1px solid var(--line);
       background: var(--paper);
       box-shadow: var(--shadow);
-      overflow-x: auto;
-      font-size: clamp(1rem, 3vw, 1.3rem);
+      text-align: center;
+      font-size: clamp(0.9rem, 2.2vw, 1.2rem);
     }
 
     .distinction {
@@ -498,13 +499,18 @@
       .connections {
         grid-template-columns: 1fr;
       }
-
+    
       .basis-row {
         grid-template-columns: 88px 1fr;
       }
-
+    
       .basis-status {
         grid-column: 2;
+      }
+    
+      .flow {
+        padding: 1rem 0.5rem;
+        font-size: clamp(0.78rem, 2.8vw, 1rem);
       }
     }
 
