@@ -1,75 +1,69 @@
-# goodmath
+# Good Math
 
-good math = constraint → signal > noise  
-45° 📐
+**Specify. Compute. Read.**
 
----
+Good Math is a public entry point for mathematical claims with explicit
+specifications, verification status, and computational reading points.
 
-## what this is
-
-goodmath.app is a simple entry point for:
-
-- translating arXiv papers
-- clarifying math + physics ideas
-- reducing noise → increasing signal
-
-this is not math tutoring.  
-this is not speculation.
-
-this is constrained, readable math.
+https://goodmath.app
 
 ---
 
-## structure
+## Paper
 
-- `index.html` → minimal homepage
-- `styles.css` → lightweight styling
-- `good.pdf` → entry document
+### Density Correction under Residue Conditioning in Primorial Systems
 
-canonical reference:
-→ https://sdg5.app/main.pdf
+The current paper develops an exact density correction for coprimality counts
+conditioned on admissible residue classes in primorial systems.
 
----
+For a squarefree divisor \(m \mid P_k\), the correction factor is
 
-## idea
+\[
+C(m)=\frac{m}{\varphi(m)}.
+\]
 
-most math online fails because:
+For \(m=6\),
 
-- unconstrained expansion → noise
-- unclear language → confusion
+\[
+C(6)=3.
+\]
 
-good math applies constraint:
+The paper also audits an earlier weighted-vector correspondence and uses the
+result to distinguish a shared label, a shared reading, and a shared
+specification.
 
-constraint → structure  
-structure → signal > noise  
+**Paper:** https://goodmath.app/paper.pdf
 
-45° 📐 (√(1² + 1²))
-
----
-
-## roadmap
-
-- arXiv translations (short, readable)
-- constraint-based summaries
-- links to deeper framework (sdg5)
+The earlier `persist.pdf` is retained as historical basis.
 
 ---
 
-## support
+## Mathematical Basis
 
-planned:
+The broader mathematical work is developed in:
 
-- “support good math” (patreon)
+https://github.com/thinkthoughts/mathematical-basis
+
+That repository separates mathematical work into explicit artifacts such as:
+
+- statements
+- proof audits
+- tests
+- computational results
+- source audits
+
+The goal is to keep a mathematical claim connected to the specification that
+produces it and to the evidence used to evaluate it.
 
 ---
 
-## repo
+## Method
 
-https://github.com/thinkthoughts/goodmath
-
----
-
-## note
-
-goodmath = entry layer  
-sdg5 = full framework
+```text
+mathematical basis
+        ↓
+specification
+        ↓
+computation
+        ↓
+reading point
