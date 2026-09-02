@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Good Math</title>
+  <meta name="description" content="Mathematical claims with explicit specifications, proofs, verification, computation, and reading points.">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"], ["$", "$"]],
+        displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --paper: #fffdf8;
+      --ink: #171512;
+      --muted: #6e665b;
+      --line: #ddd4c4;
+      --accent: #6f4e2f;
+      --soft: #f1eadf;
+      --shadow: 0 18px 60px rgba(31, 24, 14, 0.10);
+      --max: 920px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #11100e;
+      --paper: #1b1814;
+      --ink: #f3eee5;
+      --muted: #b8ab9b;
+      --line: #3b342b;
+      --accent: #e3bd82;
+      --soft: #252018;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      line-height: 1.65;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .site-nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-weight: 750;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1rem 5rem;
+    }
+
+    .hero {
+      padding: clamp(2.8rem, 7vw, 5.3rem) 0 3.7rem;
+      text-align: center;
+    }
+
+    .eyebrow,
+    .featured-label,
+    .card-label {
+      margin: 0 0 0.8rem;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-lead {
+      max-width: 700px;
+      margin: 1.6rem auto 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    }
+
+    .flow {
+      margin: 2.5rem auto 0;
+      padding: 1.15rem 1rem;
+      max-width: 760px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      text-align: center;
+      font-size: clamp(0.9rem, 2.2vw, 1.16rem);
+    }
+
+    section { margin-top: 4.4rem; }
+    .section-head { margin-bottom: 1.4rem; }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .section-intro {
+      max-width: 710px;
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+    }
+
+    .featured {
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .featured h3 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      line-height: 1.15;
+    }
+
+    .featured .subtitle {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .math-block {
+      margin: 1.45rem 0;
+      padding: 0.95rem 0.75rem;
+      overflow-x: auto;
+      text-align: center;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .plain-result {
+      max-width: 720px;
+      margin: 1rem auto 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .plain-result strong { color: var(--ink); }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.45rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .action {
+      display: inline-block;
+      padding: 0.58rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      text-decoration: none;
+      background: var(--paper);
+    }
+
+    .action.primary {
+      color: var(--paper);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    html[data-theme="dark"] .action.primary { color: #171512; }
+
+    .examples {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card,
+    .principle {
+      padding: 1.3rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .card h3 {
+      margin: 0;
+      line-height: 1.3;
+      font-size: 1.12rem;
+    }
+
+    .card p,
+    .principle p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .residue-set {
+      margin: 1rem 0 0;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92rem;
+      overflow-wrap: anywhere;
+    }
+
+    .bridge {
+      padding: 1.5rem;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+    }
+
+    .bridge h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.25rem;
+    }
+
+    .bridge p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .principle h3 {
+      margin: 0 0 0.45rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.98rem;
+    }
+
+    .basis-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .basis-row {
+      display: grid;
+      grid-template-columns: 105px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .basis-row:hover { border-color: var(--accent); }
+
+    .basis-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .basis-title {
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .basis-status {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .connections {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .connection {
+      padding: 1.1rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .connection strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .connection span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .closing {
+      margin-top: 4.5rem;
+      padding: 2rem 0 0;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .closing .equation {
+      font-size: clamp(1.15rem, 3vw, 1.5rem);
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .examples,
+      .principles,
+      .connections {
+        grid-template-columns: 1fr;
+      }
+
+      .basis-row {
+        grid-template-columns: 88px 1fr;
+      }
+
+      .basis-status { grid-column: 2; }
+    }
+
+    @media print {
+      .site-header,
+      footer { display: none; }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      main { max-width: none; }
+      .featured,
+      .flow { box-shadow: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/">goodmath.app</a>
+
+      <div class="nav-links">
+        <a href="#theorem">Theorem</a>
+        <a href="#examples">Examples</a>
+        <a href="#method">Method</a>
+        <a href="https://readingpoint.app/">Reading Point</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <p class="eyebrow">Good Math</p>
+      <h1>Specify.<br>Compute. Read.</h1>
+
+      <p class="hero-lead">
+        Start with a mathematical specification, prove what follows from it,
+        compute where useful, and state the resulting reading point clearly.
+      </p>
+
+      <div class="flow">
+        \[
+          \text{specification}
+          \longrightarrow
+          \text{proof}
+          \longrightarrow
+          \text{computation}
+          \longrightarrow
+          \text{reading point}
+        \]
+      </div>
+    </section>
+
+    <section id="theorem">
+      <div class="section-head">
+        <h2>The General Divisor Theorem</h2>
+        <p class="section-intro">
+          Residue conditions and divisibility constraints interact in a precise way.
+          The theorem identifies the exact admissibility condition, the minimal
+          repeating period, and the exact density correction.
+        </p>
+      </div>
+
+      <article class="featured">
+        <p class="featured-label">Featured result</p>
+        <h3>The General Divisor Theorem</h3>
+        <p class="subtitle">Exact Density Correction under Residue Conditioning</p>
+
+        <div class="math-block">
+          \[
+            d=\mathrm{rad}(\gcd(m,N)),
+            \qquad
+            R=\frac{\mathrm{rad}(N)}{d}
+          \]
+        </div>
+
+        <div class="math-block">
+          \[
+            \gcd(a,d)=1
+            \quad\Longrightarrow\quad
+            T_{\min}
+            =
+            mR
+            =
+            \mathrm{lcm}(m,\mathrm{rad}(N))
+          \]
+        </div>
+
+        <div class="math-block">
+          \[
+            \#\text{ accepted values per period}
+            =
+            \varphi(R),
+            \qquad
+            C(N,m)
+            =
+            \frac{d}{\varphi(d)}
+          \]
+        </div>
+
+        <p class="plain-result">
+          <strong>In plain language:</strong>
+          the prime factors shared by the residue condition and the divisibility
+          condition determine the correction. The remaining prime factors determine
+          the repeating structure.
+        </p>
+
+        <div class="actions">
+          <a class="action primary" href="/divisor.pdf">Read the paper</a>
+          <a class="action" href="https://github.com/thinkthoughts/mathematical-basis">Repository</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="examples">
+      <div class="section-head">
+        <h2>Two ways to see it</h2>
+        <p class="section-intro">
+          A familiar case shows where mod 30 fits. A second case shows why the
+          general theorem needs the sharper admissibility condition.
+        </p>
+      </div>
+
+      <div class="examples">
+        <article class="card">
+          <p class="card-label">Familiar specialization</p>
+          <h3>Modulo 30</h3>
+          <p>
+            With \(N=m=30\), the theorem reduces to the eight residue classes
+            coprime to 30.
+          </p>
+
+          <div class="residue-set">{ 1, 7, 11, 13, 17, 19, 23, 29 }</div>
+
+          <p>
+            These are exactly the candidate residue classes for primes greater
+            than 5.
+          </p>
+
+          <div class="actions">
+            <a class="action" href="https://readingpoint.app/">Try the mod 30 demo</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="card-label">Distinguishing example</p>
+          <h3>\(N=5,\ m=6,\ a=2\)</h3>
+          <p>
+            Here \(a\) shares a factor with \(m\), but that shared factor is
+            irrelevant to coprimality with \(N\). The general theorem correctly
+            keeps the residue class admissible.
+          </p>
+
+          <div class="math-block">
+            \[
+              2,\ 8,\ 14,\ 26
+            \]
+          </div>
+
+          <p>
+            Four accepted values occur in the minimal period \(30\),
+            exactly as the theorem specifies.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="reading-point">
+      <div class="bridge">
+        <h3>From theorem to reading point</h3>
+        <p>
+          The theorem specifies the mathematical structure. A computation or
+          measurement can then supply a reading point within that specification.
+          The interactive modulo 30 instrument at
+          <a href="https://readingpoint.app/">readingpoint.app</a>
+          lets you enter an integer and see its residue in the 30-state modular
+          reading space.
+        </p>
+
+        <div class="actions">
+          <a class="action" href="https://readingpoint.app/">Open Reading Point</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="section-head">
+        <h2>How Good Math works</h2>
+        <p class="section-intro">
+          Mathematical claims are kept close to the specifications that support
+          them. Proofs establish the general result. Computations provide
+          verification and concrete reading points where they add useful evidence.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <h3>Specify</h3>
+          <p>State the mathematical objects, assumptions, constraints, and applicable boundaries.</p>
+        </div>
+
+        <div class="principle">
+          <h3>Compute</h3>
+          <p>Use executable tests where computation provides a meaningful realization or check of the specification.</p>
+        </div>
+
+        <div class="principle">
+          <h3>Read</h3>
+          <p>Record the resulting mathematical or computational reading point together with the specification that produces it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="basis">
+      <div class="section-head">
+        <h2>Mathematical Basis</h2>
+        <p class="section-intro">
+          For readers who want the underlying project structure, Mathematical
+          Basis keeps statements, proof audits, tests, and results separately
+          addressable.
+        </p>
+      </div>
+
+      <div class="basis-list">
+        <a class="basis-row" href="/MB_0001/">
+          <span class="basis-id">MB_0001</span>
+          <span class="basis-title">General Divisor Theorem</span>
+          <span class="basis-status">proved · verified</span>
+        </a>
+
+        <a class="basis-row" href="/MB_0005/">
+          <span class="basis-id">MB_0005</span>
+          <span class="basis-title">Coordinate Distribution Specifies the Ellipsoid-Fitting Phase Boundary</span>
+          <span class="basis-status">audited · supported</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="connections">
+      <div class="section-head">
+        <h2>Connected work</h2>
+        <p class="section-intro">
+          Mathematical statements, scientific investigations, and reading-point
+          tools remain separately addressable while sharing a common specification workflow.
+        </p>
+      </div>
+
+      <div class="connections">
+        <a class="connection" href="/">
+          <strong>goodmath.app</strong>
+          <span>Mathematical statements, proofs, and verification.</span>
+        </a>
+
+        <a class="connection" href="https://readingpoint.app/">
+          <strong>readingpoint.app</strong>
+          <span>Interactive specifications and computational reading points.</span>
+        </a>
+
+        <a class="connection" href="https://labreports.app/">
+          <strong>labreports.app</strong>
+          <span>Source-grounded scientific investigations.</span>
+        </a>
+
+        <a class="connection" href="https://github.com/thinkthoughts/mathematical-basis">
+          <strong>GitHub</strong>
+          <span>Statements, proof audits, tests, results, and papers.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="equation">
+        \[
+          \text{specification}
+          \neq
+          \text{reading point}
+        \]
+      </div>
+
+      <p>State the reading together with the specification that produces it.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>goodmath.app · mathematical specifications, proofs, computations, and reading points</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const saved = localStorage.getItem("theme");
+
+    if (saved === "dark" || saved === "light") {
+      root.setAttribute("data-theme", saved);
+    }
+
+    function setButtonText() {
+      toggle.textContent = root.getAttribute("data-theme") === "dark"
+        ? "Light mode"
+        : "Dark mode";
+    }
+
+    setButtonText();
+
+    toggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      setButtonText();
+    });
+  </script>
+
+</body>
+</html>
