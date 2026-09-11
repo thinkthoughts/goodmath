@@ -1,0 +1,29 @@
+The unbundling seems to be doing exactly what I'd hope: separating the leading algebraic specification from the construction that originally produced it. The `p`-adic step now makes the dependency question sharper—what additional structure is actually required beyond `InvolutionAlgebra` + prime `p` to define the norm, valuation, and completion without quietly reintroducing Archimedean assumptions?
+
+So: what is the minimum additional leading specification needed for the next trailing generalization?
+
+If \(S_n\) denotes the specification at a reading point, then locally:
+
+\[
+S_{n-1}\longrightarrow\boxed{S_n}\longrightarrow S_{n+1}.
+\]
+
+The same additional step can be read from its two sides:
+
+\[
+S_n\xrightarrow{+1}S_{n+1},
+\]
+
+where \(S_n\) leads \(S_{n+1}\), while \(S_{n+1}\) trails \(S_n\).
+
+For this case, schematically:
+
+\[
+\begin{aligned}
+S_0 &= \text{Cayley--Dickson construction} \\
+&\longrightarrow S_1 = \texttt{InvolutionAlgebra} \\
+&\longrightarrow S_2 = \text{\(p\)-adic extension}.
+\end{aligned}
+\]
+
+So the practical question is: what is the minimum \(+1\) specification required for \(S_1\to S_2\)?
